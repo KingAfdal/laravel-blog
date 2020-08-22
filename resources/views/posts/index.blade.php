@@ -15,7 +15,7 @@
             <h4>Tag: {{ $tag->name}} </h4>
               @endisset
 
-              @if (!isset($tag)&& !isset($category))
+              @if (!isset($tag) && !isset($category))
                   <h4>All Post</h4>
               @endif
             <hr>
@@ -63,9 +63,9 @@
 
                     Published on {{ $post->created_at->diffForHumans()}}
 
-                    @auth
+                    @if (auth()->user()->is($post->author))
                         <a href="/posts/{{ $post->slug }}/edit" class="btn btn-sm btn-success">Edit</a>
-                    @endauth
+                    @endif
                 </div>
             </div>
 

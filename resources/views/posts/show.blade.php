@@ -21,7 +21,12 @@
     <p>{{ $post->body }}</p>
 
     <div>
-      @auth
+
+      <div class="text-secondary">
+        Wrote by {{  $post->author->name }}
+      </div>
+
+      @if(auth()->user()->is($post->author))
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-link text-danger btn-sm p-0" data-toggle="modal" data-target="#exampleModal">
               Delete
@@ -63,7 +68,7 @@
               </div>
             </div>
          
-      @endauth
+      @endif
     </div>
 </div>
     
